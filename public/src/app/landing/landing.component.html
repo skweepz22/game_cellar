@@ -1,0 +1,58 @@
+<section>
+    <div class="header">
+      <h1>Welcome to Game Cellar</h1>
+      <h3>Sign in now, or Register to get started.</h3>
+      <div class="buttons">
+        <button (click)="register()">Register</button>
+        <button (click)="sign()">Sign In</button>
+      </div>
+    </div>
+    <div class="forms">
+      <form style="height: 70%" (submit)="login_user()" #logForm="ngForm" *ngIf="this.signIn==true">
+        <h1>Sign In!</h1>
+        <ul>
+          <li>
+            <p for="username">Username:</p>
+            <input type="text" name="username" id="exampleInputEmail1" required minlength="8" [(ngModel)]="userLog.username" #username="ngModel" placeholder="Enter Username">
+          </li>
+          <li>
+            <p for="password">Password:</p>
+            <input type="password" name="password" id="exampleInputEmail1" required minlength="10" [(ngModel)]="userLog.password" #password="ngModel" placeholder="Enter Password">   
+            <small id="emailHelp" class="form-text">We'll never share your password with anyone else.</small>
+          </li>
+          <li>
+            <input type="submit" value="Log In" [disabled]="logForm.invalid">
+          </li>
+        </ul>
+        <span style="text-align: center;" *ngIf="err.logError">{{err.msg}}</span>
+      </form>
+  
+      <form style="height: 100%" (submit)="register_user()" #regForm="ngForm" *ngIf="this.reg==true">
+        <h1>Register!</h1>
+        <ul>
+          <li>
+            <p for="username">Username:</p>
+            <input type="text" name="username" id="exampleInputEmail1" required minlength="8" [(ngModel)]="userReg.username" #username="ngModel" placeholder="Enter Username">
+          </li>
+          <li>
+            <p for="email">Email:</p>
+            <input type="email" name="email" id="exampleInputEmail1" required pattern="[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+" [(ngModel)]="userReg.email" #email="ngModel" placeholder="Enter Email">
+            <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+          </li>
+          <li>
+            <p for="password">Password:</p>
+            <input type="password" name="password" id="exampleInputEmail1" required minlength="10" [(ngModel)]="userReg.password" #password="ngModel" placeholder="Enter Password">
+          </li>
+          <li>
+            <p for="confirm">Passowrd Confirmation:</p>
+            <input type="password" name="confirm" id="exampleInputEmail1" required minlength="10" [(ngModel)]="confirm_password" #confirm="ngModel" placeholder="Re-Enter Password">
+            <small id="emailHelp" class="form-text">We'll never share your password with anyone else.</small>
+          </li>
+          <li>
+            <input type="submit" value="Register" [disabled]="regForm.invalid||userReg.password!=confirm_password">
+          </li> 
+        </ul>
+        <span style="text-align: center;" *ngIf="err.regError">{{err.msg}}</span>
+      </form>
+    </div> 
+  </section>

@@ -1,0 +1,17 @@
+<div class="container">
+    <section class="welcome">
+        <h1>Welcome {{user.username}}</h1>
+    </section>
+
+    <section class="games">
+        <div class="card" *ngFor="let game of games">
+            <h1>{{game.name}}</h1>
+            <h3>{{game.console}}</h3>
+            <p>{{game.condition}}</p>
+            <p>{{game.year}}</p>
+            <b>${{game.price}}</b>
+            <button>Contact Seller</button>
+            <button>Add To Wishlist</button>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,18 @@
+.gameForm{
+    padding: 0;
+    margin: 0;
+    height: 50vh;
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.gameForm form{
+    flex: 1;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+}

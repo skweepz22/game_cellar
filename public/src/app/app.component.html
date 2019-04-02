@@ -1,0 +1,21 @@
+<header *ngIf="this.logged">
+    <section>
+        <h1>Game Cellar</h1>
+        <form>
+            <input type="text" name="game" placeholder="Search the cellar">
+            <input type="submit" value="Search">
+            <button (click)="logOut()">Log Out</button>
+        </form>
+        
+    </section>
+    <nav>
+        <ul>
+            <li class="home"><a [routerLink]="['gamer', 'main']">Home</a></li>
+            <li class="pofile"><a [routerLink]="['gamer', 'profile']">My Profile</a></li>
+            <li class="new-game"><a [routerLink]="['gamer', 'new']">Add Game</a></li>
+            <li class="about"><a [routerLink]="['gamer', 'about']">About Us</a></li>
+            <li class="contact"><a [routerLink]="['gamer', 'contact']">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<router-outlet></router-outlet>
