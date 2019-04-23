@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema({
     games:[{type:Schema.Types.ObjectId, ref:"Game"}],
     bio:{type:String, required:false},
     system:{type:String, required:false},
-    whishlist:{type:Array, required:false},
+    whishlist:[{type:Schema.Types.ObjectId, ref:"Game"}],
 }, {timestamps:true});
 
 const GameSchema = mongoose.Schema({

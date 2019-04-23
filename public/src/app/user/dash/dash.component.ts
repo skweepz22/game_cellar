@@ -15,14 +15,20 @@ export class DashComponent implements OnInit {
   token: String;
   games: Array<Game>;
   seller: User;
+  modal: Boolean = false;
   error = {
     err: false,
     msg: "Sorry no Games are Available, go ahead and add one"
   }
 
+  userWishList: User;
+
   constructor(private _router: Router, private _service: GamerService) { }
 
   ngOnInit() {
+    if(!this._service.getUser()){
+      this._service.logOutUser();
+    }
     this.token = this._service.getToken();
     this._service.getUser()
     .subscribe((res: any) => {
@@ -38,5 +44,39 @@ export class DashComponent implements OnInit {
       }
     })
   }
+  getSeller(id){
+    this._service.getSeller(id)
+      .subscribe((res: any) => {
+        if(res.user){
+          this.modal = true;
+          this.seller = res.user
+        }
+      });
+  };
 
+  addGameToWishlist(game_id){
+    this._service.addGameToWishlist(game_id)
+      .subscribe((res: any) => {
+        if(res.user){
+          console.log(res.user)
+        } else{
+          console.log("No user returned")
+        }
+      })
+  }
+
+  deleteGame(game_id){
+    this._service.deleteGame(game_id)
+      .subscribe((res: any) => {
+        if(res.delete){
+          alert("Game was deleted successfully");
+          window.location.reload();
+        }
+    })
+  }
+
+  visitSellersProfile(){
+    this._service.seller = this.seller;
+    this._router.navigateByUrl("/gamer/seller");
+  }
 }

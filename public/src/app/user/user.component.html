@@ -1,0 +1,17 @@
+<header *ngIf="this.logged">
+    <section>
+        <div class="logo">
+            <h1>Game Cellar</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a [routerLink]="['gamer', 'main']">Home</a></li>
+                <li><a [routerLink]="['gamer', 'profile']">My Profile</a></li>
+                <li><a [routerLink]="['gamer', 'new']">Add Game</a></li>
+                <li><a [routerLink]="['gamer', 'about']">About</a></li>
+                <li><a [routerLink]="['gamer', 'contact']">Contact</a></li>
+            </ul>
+        </nav>  
+        <button (click)="logOut()">Log Out</button>      
+    </section>
+</header>

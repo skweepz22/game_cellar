@@ -13,16 +13,15 @@ export class AppComponent implements OnInit{
   constructor(private _router: Router, private _service: GamerService){}
 
   ngOnInit(){
-    if(this._service.getToken()){
+    if(this._service.getUser()){
       this.logged = true
     } else {
-      this._router.navigateByUrl("/");
+      this._service.logOutUser();
     }
   }
 
   logOut(){
-    window.localStorage.removeItem("token");
     this.logged = false;
-    this._router.navigateByUrl("/");
+    this._service.logOutUser();
   }
 }

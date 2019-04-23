@@ -10,6 +10,7 @@ import { User } from "./user";
 export class GamerService{
 
   token: string = this.getToken();
+  seller: User;
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
@@ -33,7 +34,29 @@ export class GamerService{
     return this._http.get<Observable<User>>("/user/"+this.token)
   }
 
+  getSeller(id){
+    return this._http.get<Observable<User>>("/seller/"+id)
+  }
+
   getToken(){
     return window.localStorage.getItem("token");
+  }
+
+  deleteGame(game_id){
+    return this._http.delete<any>("/games/"+this.token+"/"+game_id)
+  }
+
+  editUser(data){
+    return this._http.put<any>("/user/"+this.token, data)
+  }
+
+  addGameToWishlist(game_id){
+    return this._http.put<any>("/user/"+this.token+"/wish/", {game_id: game_id})
+  }
+
+  logOutUser(){
+    this.token = null;
+    window.localStorage.removeItem("token");
+    this._router.navigateByUrl("/");
   }
 }

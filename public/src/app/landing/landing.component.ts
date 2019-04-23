@@ -38,6 +38,7 @@ export class LandingComponent implements OnInit {
         if(res.token){
           window.localStorage.setItem("token", res.token);
           this._router.navigateByUrl("/gamer/main");
+          window.location.reload();
         } else {
           this.err.logError = true;
           this._router.navigateByUrl("/");
@@ -54,7 +55,7 @@ export class LandingComponent implements OnInit {
           this._service.token = res.token;
           window.localStorage.setItem("token", res.token);
           this._router.navigateByUrl("/gamer/main");
-          location.reload();
+          window.location.reload();
         } else {
           this.err.logError = true;
           this._router.navigateByUrl("/");

@@ -1,0 +1,119 @@
+.container{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+section.welcome{
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 22px;
+}
+section.games{
+    min-height: fit-content;
+    height: 100%;
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+}
+section.games .card{
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(110,119,116,0.5);
+    border: 2px solid #000; 
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+}
+
+section.games .card button{
+    padding: 0;
+    margin: 2px;
+    height: 25px;
+    width: auto;
+
+}
+
+section.games .card h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+section.games .card h1, h3, p, b{
+    padding: 5px;
+    margin: 0;
+}
+
+.modal{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+.modal-content{
+    height: fit-content;
+    width: 50%;
+    background-color: #fff;
+    margin: auto;
+    box-shadow: 10px 10px 5px 5px #000;
+}
+.modal-content span{
+    padding: 0;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+}
+.modal-content span:hover{
+    color: #fff;
+    cursor: pointer;
+}
+.modal-header{
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #000;
+    color: whitesmoke;
+    display: flex;
+}
+
+.modal-header h2{
+    padding: 0;
+    margin: auto;
+    /* line-height: 50px; */
+    font-weight: bold;
+    font-family: 'Noto Serif', serif; 
+}
+.modal-body{
+    margin: 0;
+    padding: 10px;
+    height: 10rem;
+    display: flex;
+    flex-flow: column;
+}
+.modal-body p, a{
+    font-family: 'Noto Serif', serif;
+    font-weight: 200;
+    font-size: 20px;
+    padding: 5px 0;
+    margin: auto;
+}
+
+@media only screen and (max-width: 620px){
+    section.games{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    section.games .card{
+        width: 80%;
+    }
+}

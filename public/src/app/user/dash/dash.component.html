@@ -10,8 +10,24 @@
             <p>{{game.condition}}</p>
             <p>{{game.year}}</p>
             <b>${{game.price}}</b>
-            <button>Contact Seller</button>
-            <button>Add To Wishlist</button>
+            <button *ngIf="user._id !== game._user" (click)="getSeller(game._user)">Contact Seller</button>
+            <button *ngIf="user._id !== game._user" (click)="addGameToWishlist(game._id)">Add To Wishlist</button>
+            <button *ngIf="user._id === game._user" (click)="deleteGame(game._id)">Delete Game</button>
         </div>
     </section>
+    <br />
+
+    <div *ngIf="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span (click)="modal=false">&times;</span>
+                <h2>Here is the Seller's info</h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Name:</b> {{seller.username}}</p>
+                <p><b>Email:</b> {{seller.email}}</p>
+                <button (click)="visitSellersProfile()">Visit {{seller.username}}'s Profile</button>
+            </div>
+        </div>
+    </div>
 </div>

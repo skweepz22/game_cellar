@@ -1,3 +1,20 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+  <section class="card">
+    <div class="userinfo">
+      <button [routerLink]="['/gamer', 'edit']">Edit Profile</button>
+      <h1 *ngIf="!seler">{{user.username}}</h1>
+      <img src="../../../assets/images/noprofilepic.png" alt="profile picture">
+      <ul>
+        <li><b>Bio:</b> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id iste temporibus facere harum soluta ipsum aliquid laboriosam nobis enim iure.</li>
+        <hr>
+        <li><b>System:</b> {{user.system}}</li>
+        <hr>
+        <li><b>Phone:</b> {{user.phone}}</li>
+        <hr>
+        <li><b>Games:</b></li>
+        <hr>
+        <li><b>Wishlist:</b></li>
+      </ul>
+    </div>
+  </section>
+</div>

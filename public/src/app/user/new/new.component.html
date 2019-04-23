@@ -1,23 +1,30 @@
-<div class="gameForm">
-  <form (submit)="createGame()" #gameForm="ngForm">
-    <label for="name">Name:</label>
-    <input type="text" name="name" required minlength="2" [(ngModel)]="game.name" #name="ngModel" placeholder="Tell us the name of your game">
-    <label for="console">Console:</label>
-    <input type="text" name="console" required minlength="2" [(ngModel)]="game.console" #console="ngModel" placeholder="What console is your game on">
-    <label for="conditon">Condition:</label>
-    <select name="condition" required [(ngModel)]="game.condition" #condition="ngModel">
-      <option value="Like New">Like New</option>
-      <option value="Great">Great</option>
-      <option value="Good">Good</option>
-      <option value="Decent">Decent</option>
-    </select>
-    <label for="price">Price:</label>
-    <input type="number" name="price" required min="0.01" [(ngModel)]="game.price" #price="ngModel">
-    <label for="year">Year Bought:</label>
-    <select name="year" required [(ngModel)]="game.year" #year="ngModel">
-      <option selected>2019</option>
-      <option *ngFor="let i of years">{{i}}</option>
-    </select>
-    <input type="submit" value="Create Game" [disabled]="gameForm.invalid">
-  </form>
-</div>
+<section>
+  <div class="gameForm">
+    <form (submit)="createGame()" #gameForm="ngForm">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required minlength="2" [(ngModel)]="game.name" #name="ngModel" placeholder="Tell us the name of your game">
+      <br />
+      <label for="console">Console:</label>
+      <input type="text" name="console" required minlength="2" [(ngModel)]="game.console" #console="ngModel" placeholder="What console is your game on">
+      <br />
+      <label for="conditon">Condition:</label>
+      <select name="condition" required [(ngModel)]="game.condition" #condition="ngModel">
+        <option value="Like New">Like New</option>
+        <option value="Great">Great</option>
+        <option value="Good">Good</option>
+        <option value="Decent">Decent</option>
+      </select>
+      <br />
+      <label for="price">Price:</label>
+      <input type="number" name="price" required min="0.01" [(ngModel)]="game.price" #price="ngModel">
+      <br />
+      <label for="year">Year Bought:</label>
+      <select name="year" required [(ngModel)]="game.year" #year="ngModel">
+        <option selected>2019</option>
+        <option *ngFor="let i of years">{{i}}</option>
+      </select>
+      <br />
+      <input type="submit" value="Create Game" [disabled]="gameForm.invalid">
+    </form>
+  </div>
+</section>

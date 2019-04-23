@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GamerService } from '../../gamer.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+
+  constructor(private _service: GamerService, private _router: Router) { }
 
   ngOnInit() {
+    if(!this._service.getToken()){
+      this._router.navigateByUrl("/");
+    }
+
+    this._service.getUser()
+      .subscribe((res: any) => {
+        if(res.user){
+          this.user = res.user
+        }
+      })
   }
 
 }

@@ -28,7 +28,7 @@ module.exports = {
                         console.log(err);
                         res.json(err);
                     } else {
-                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '24h'})
+                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'})
                         res.json({token:token});
                     }
                 });
@@ -58,7 +58,7 @@ module.exports = {
                     if(match){    
                         // if true will initiate session id
                         // send id as user id to log in user and allow access to app
-                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '24h'});
+                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
                         res.json({token: token}); 
                     }
                 });
@@ -68,13 +68,18 @@ module.exports = {
     },
 
     one_user: function(req, res){
+        // Using both id and token to either find User or Seller information
         var token = req.params.token;
+        var id = req.params.id
         if(token){
+            //if token is provided we are searching for user
+            //verify token before query
             jwt.verify(token, secret, function(err, decoded){
                 if(err){
                     res.json({ user:false });
                 } else {
-                    User.findById(decoded.id).populate("games").exec(function(err, user){
+                    // use decoded id to find user and populate games
+                    User.findById(decoded.id).populate("games").populate("whishlist").exec(function(err, user){
                         if(err || !user){
                             res.json({ user:false })
                         } else {
@@ -85,7 +90,9 @@ module.exports = {
                 };
             });
         }else if(id){
-            User.findById(id).populate("games").exec(function(err, user){
+            //if id is provided then we are searching for seller
+            //use id to find seller and populate games
+            User.findById(id).populate("games").populate("whishlist").exec(function(err, user){
                 if(err || !user){
                     res.json({user:false});
                 } else {
@@ -111,7 +118,6 @@ module.exports = {
                             user.bio = req.body.bio;
                             user.phone = req.body.phone
                             user.system = req.body.system
-                            user.wishList = req.body.wishList;
                             user.save();
                             res.json({user:user});
                         }
@@ -120,6 +126,8 @@ module.exports = {
             });
         };
     },
+
+   
 
     create_game: function(req, res){
         var token = req.params.token;
@@ -152,6 +160,28 @@ module.exports = {
         }
     },
 
+    deleteGame: (req, res) => {
+        const token = req. params.token
+        const game_id = req.params.game_id 
+        if(req.params.token){
+            jwt.verify(token, secret, (err, decoded) => {
+                if(err){
+                    res.json({delete:false});
+                } else {
+                    Game.findByIdAndRemove(game_id, (err, game) => {
+                        User.findByIdAndUpdate(decoded.id, { $pull: { games: { $in: game_id }}}, (err, user) => {
+                            if(err){
+                                res.josn({delete: false});
+                            } else {
+                                res.json({delete: true});
+                            }
+                        });
+                    });
+                };
+            });
+        };
+    },
+
     all_games(req, res){
         Game.find({}, function(err, games){
             if(err || !games){
@@ -160,5 +190,33 @@ module.exports = {
                 res.json({games:games});
             };
         });
+    },
+    
+    addGameToWishList: (req, res) => {
+        var game_id = req.body.game_id;
+        if(req.params.token){
+            jwt.verify(req.params.token, secret, (err, decoded) => {
+                if(err){
+                    console.log(err);
+                    res.json({user:false})
+                } else {
+                    Game.findById(game_id, (err, game) => {
+                        if(err){
+                            console.log(err);
+                            res.json({user:false})
+                        } else {
+                            User.findByIdAndUpdate(decoded.id, { $addToSet: { whishlist: game } }, (err, user) => {
+                                if(err){
+                                    console.log(err);
+                                    res.json({err: err})
+                                } else {
+                                    res.json({user: user})
+                                }
+                            });
+                        };
+                    });
+                };
+            });
+        };
     }
 };

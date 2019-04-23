@@ -1,4 +1,25 @@
-html, body{
+html{
+    padding: 0;
+    margin: 0;
+    min-width: fit-content;
+    min-height: fit-content;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    width: 100%;
+    height: 100%;
+}
+body{
     margin: 0;
     padding: 0;
+    background: -moz-linear-gradient(-45deg, rgba(174,188,191,0.7) 0%, rgba(170,183,186,0.7) 2%, rgba(110,119,116,0.78) 29%, rgba(10,14,10,0.94) 81%, rgba(10,8,9,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(174,188,191,0.7) 0%,rgba(170,183,186,0.7) 2%,rgba(110,119,116,0.78) 29%,rgba(10,14,10,0.94) 81%,rgba(10,8,9,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(174,188,191,0.7) 0%,rgba(170,183,186,0.7) 2%,rgba(110,119,116,0.78) 29%,rgba(10,14,10,0.94) 81%,rgba(10,8,9,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3aebcbf', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    font-family: 'Bungee', 'cursive'
 }
