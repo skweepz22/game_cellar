@@ -1,7 +1,23 @@
 <div class="container">
+  <section *ngIf="edit_modal" class="edit_modal">
+    <div class="edit_modal_content">
+      <div class="edit_header">
+          <span (click)="edit_modal=false">&times;</span>
+          <h2>Edit You're Profile Here</h2>
+      </div>
+      <div class="edit_form" (submit)="updateProfile()">
+        <form #editForm="ngForm">
+          <input type="text" minlength="3" [(ngModel)]="editUser.system" #system="ngModel" placeholder="Gaming System">
+          <input type="tel" minlength="10" [(ngModel)]="editUser.phone" #phone="ngModel" placeholder="Phone Number">
+          <textarea cols="20" rows="5" minlength="25" [(ngModel)]="editUser.bio" #bio="ngModel" placeholder="Tell us About Yourself..."></textarea>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </section>
   <section class="card">
     <div class="userinfo">
-      <button [routerLink]="['/gamer', 'edit']">Edit Profile</button>
+      <button (click)="edit_modal=true">Edit Profile</button>
       <h1 *ngIf="!seler">{{user.username}}</h1>
       <img src="../../../assets/images/noprofilepic.png" alt="profile picture">
       <ul>

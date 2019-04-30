@@ -62,7 +62,7 @@ section.games .card h1, h3, p, b{
     width: 50%;
     background-color: #fff;
     margin: auto;
-    box-shadow: 10px 10px 5px 5px #000;
+    box-shadow: 0 5px 10px 8px rgba(0,0,0,0.8);
 }
 .modal-content span{
     padding: 0;

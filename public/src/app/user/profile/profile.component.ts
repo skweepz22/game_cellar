@@ -11,6 +11,8 @@ import { User } from 'src/app/user';
 export class ProfileComponent implements OnInit {
 
   user: User;
+  edit_modal: Boolean = false;
+  editUser: User = new User();
 
   constructor(private _service: GamerService, private _router: Router) { }
 
@@ -27,4 +29,13 @@ export class ProfileComponent implements OnInit {
       })
   }
 
+  updateProfile(){
+    this._service.editUser(this.editUser)
+      .subscribe((res: any) => {
+        if(res.user){
+          this.user = res.user;
+          window.location.reload();
+        }
+      })
+  }
 }

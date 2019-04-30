@@ -1,17 +1,17 @@
 .container{
     padding: 0;
-    margin: 2rem 0 0 0;
+    margin: 0;
     height: 100%;
-    width: auto;
-    display: flex;
+    width: 100%;
+    /* display: flex; */
 }
 
 section.card{
-    padding: 0;
-    margin: auto;
+    padding: 0.5em;
+    margin: 40px auto;
     background-color: rgba(0, 0, 0, 0.33);
-    height: 100%;
-    width: 50%;
+    height: fit-content;
+    width: 50vw;
     border-radius: 10px;
 }
 
@@ -41,8 +41,8 @@ section.card .userinfo h1{
 section.card .userinfo img{
     margin: 10px auto;
     padding: 0;
-    height: 200px;
-    width: 200px;
+    height: 160px;
+    width: 160px;
     border: 2px solid #fff;
     border-radius: 50%;
 }
@@ -51,4 +51,89 @@ section.card .userinfo ul{
     padding: 0;
     margin: auto 2em;
     list-style: none;
+}
+
+section.edit_modal{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+section.edit_modal .edit_modal_content{
+    padding: 0;
+    margin: auto;
+    min-height: fit-content;
+    height: 40vh;
+    width: 40vw;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 8px rgba(0, 0, 0, 0.65)
+}
+
+.edit_header{
+    padding: 0;
+    margin: 0;
+    height: 25%;
+    width: 100%;
+    background-color: #000;
+}
+
+.edit_header span{
+    padding: 20px 10px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+.edit_header span:hover{
+    color: #fff;
+    cursor: pointer;
+}
+
+.edit_header h2{
+    padding: 0 0 10px 0;
+    margin: 0;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.edit_form{
+    padding: 10px;
+    margin: 0;
+    display: flex;
+}
+
+.edit_form form{
+    padding: 0;
+    margin: auto;
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_form form input[type="text"], input[type="tel"], textarea{
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.edit_form form input[type="text"]::placeholder, input[type="tel"]::placeholder, textarea::placeholder{
+    color: #000;
+    font-size: 16px;
+}
+
+.edit_form form input[type="submit"]{
+    padding: 5px;
+    margin:   10px auto;
+    width: 90%;
+    height: 30px;
+    border: none;
+    background-color: rgb(0, 150, 204);
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,0.6)
 }
