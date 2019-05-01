@@ -45,20 +45,29 @@ header section form input[type="submit"]{
     background-color: rgb(113, 113, 113);
 } */
 header section div.logo{
-    height: 90%;
-    width: 100%;
+    height: 60px;
+    width: 190px;
     background-color: rgba(172, 172, 172, 0.9);
     border: 1px solid #000;
     border-radius:  45%;
-    box-shadow: 5px 5px 2px 2px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 5px 5px rgba(0,0,0,0.8);
     transform: rotate(-5deg);
 }
+
 header section div.logo h1{
     margin: 0;
     padding: 0;
     font-weight: bold;
     text-transform: capitalize;
+    text-align: center;
+    transition: 1s ease-in-out;
 }
+
+header section div.logo:hover h1{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 header nav{
     background: #45484d; /* Old browsers */
     background: -moz-linear-gradient(-180deg, #45484d 0%, #000000 100%); /* FF3.6-15 */
@@ -66,7 +75,7 @@ header nav{
     background: linear-gradient(360deg, #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     height: 5vh;
-    width: 80%;
+    width: fit-content;
     margin: auto;
 }
 header nav ul{
@@ -82,7 +91,6 @@ header nav ul{
 header nav ul li{
     margin: 0;
     padding: 0;
-    flex: 1;
     text-align: center;
     border-right: 1px solid #fff;
     transition: 0.5s ease-in-out;
@@ -93,9 +101,7 @@ header nav ul li:last-child{
 }
 header nav ul li a{
     margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+    padding: 14px 44px;
     text-decoration: none;
     color: inherit;
     line-height: 5vh;
@@ -113,6 +119,6 @@ header section button{
     height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
-    box-shadow: 0.2em 0.2em rgba(57, 57, 57, 0.87);
-    background-color: rgb(2, 64, 189);
+    box-shadow: 0 2px 5px 1px rgba(57, 57, 57, 0.87);
+    background-color: rgb(155, 0, 0);
 }

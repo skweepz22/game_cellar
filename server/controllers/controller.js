@@ -79,7 +79,7 @@ module.exports = {
                     res.json({ user:false });
                 } else {
                     // use decoded id to find user and populate games
-                    User.findById(decoded.id).populate("games").populate("whishlist").exec(function(err, user){
+                    User.findById(decoded.id).populate("games").populate("wishlist").exec(function(err, user){
                         if(err || !user){
                             res.json({ user:false })
                         } else {
@@ -92,7 +92,7 @@ module.exports = {
         }else if(id){
             //if id is provided then we are searching for seller
             //use id to find seller and populate games
-            User.findById(id).populate("games").populate("whishlist").exec(function(err, user){
+            User.findById(id).populate("games").populate("wishlist").exec(function(err, user){
                 if(err || !user){
                     res.json({user:false});
                 } else {

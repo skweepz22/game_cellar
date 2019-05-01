@@ -4,15 +4,15 @@
         <h1>{{user.username}}</h1>
         <img src="../../../assets/images/noprofilepic.png" alt="profile picture">
         <ul>
-          <li><b>Bio:</b> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id iste temporibus facere harum soluta ipsum aliquid laboriosam nobis enim iure.</li>
+          <li><b>Bio:</b> {{user.bio}}</li>
           <hr>
           <li><b>System:</b> {{user.system}}</li>
           <hr>
           <li><b>Phone:</b> {{user.phone}}</li>
           <hr>
-          <li><b>Games:</b></li>
+          <li><b>Games:</b> {{user.games[0].name}}</li>
           <hr>
-          <li><b>Wishlist:</b></li>
+          <li><b>Wishlist:</b> {{user.wishlist[0].name}}</li>
         </ul>
       </div>
     </section>

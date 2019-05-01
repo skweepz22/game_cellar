@@ -1,5 +1,6 @@
 <section>
   <div class="gameForm">
+    <h1>Add A New Game To the Cellar</h1>
     <form (submit)="createGame()" #gameForm="ngForm">
       <label for="name">Name:</label>
       <input type="text" name="name" required minlength="2" [(ngModel)]="game.name" #name="ngModel" placeholder="Tell us the name of your game">
