@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GamerService } from 'src/app/gamer.service';
 import { User } from 'src/app/user';
 import { Game } from '../../game';
+import { NgxSpinnerService } from 'ngx-spinner'; 
 
 @Component({
   selector: 'app-dash',
@@ -23,9 +24,15 @@ export class DashComponent implements OnInit {
 
   userWishList: User;
 
-  constructor(private _router: Router, private _service: GamerService) { }
+  constructor(private _router: Router, private _service: GamerService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 5000)
+
     if(!this._service.getUser()){
       this._service.logOutUser();
     }

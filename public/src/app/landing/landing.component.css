@@ -1,121 +1,136 @@
-section{
+section {
     margin: 0;
     padding: 0;
-    min-height: fit-content;
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-image: url("../../../dist/public/assets/images/circuits.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header {
+    margin: auto;
+    padding: 0;
     width: 100vw;
-}
-section .header{
-    height: 200px;
-    width: auto;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #fff;
+    display: grid;
+    grid-auto-columns: 1fr 1fr;
 }
 
-section .header .buttons{
-    margin: 0;
+.header h1 {
+    margin: auto;
     padding: 0;
-}
-section .forms{
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 400px;
-    color: #000;
+    font-size: 42px;
+    font-weight: bolder;
+    text-shadow: 2px 2px 6px rgba(255, 253, 253, 0.667);
+    color: rgb(54, 54, 54);
+    -webkit-text-fill-color: #ccc;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 
-section .forms form{
-    width: 350px;
-    margin: 25px;
-    background-color: rgba(15, 15, 15, .95);
-    text-align: left;
-    border: 2px solid #fff;
-    border-radius: 20px;    
-    box-shadow: 20 20px 40px 30px #333;
-
-}
-section .forms form h1{
-    padding-top: 10px;
-    margin: 0;
-    color: #fff;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 1px 1px #000;
-}
-section .forms form p{
-    margin-top: 10px;
-    margin-bottom: 5px;
+.header h3{
+    margin: auto;
     padding: 0;
-    font-size: 16px;
+    font-size: 36px;
     font-weight: bold;
+    color: black;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+.forms {
+    margin: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.forms .buttons {
+    margin: auto;
+    padding: 10px;
+}
+
+.forms button {
+    margin: 2px;
+    border-radius: 12px;
+}
+
+.buttons :nth-child(1){
+    margin: 0 1em;
+    padding: 15px;
+    background-color: rgb(193, 193, 193);
     color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
 }
-section .forms form ul{
-    float: left;
-    width: 80%;
-    height: fit-content;
-}
-section .forms form ul li{
-    list-style: none;
-}
-section .forms form input{
-    width: 100%;
-}
-section .forms form input::placeholder{
-    color:#fff;
-}
-section .forms form input[type="text"],
-section .forms form input[type="email"],
-section .forms form input[type="password"]{
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
+
+.buttons :nth-child(2){
+    margin: 0 1em;
+    padding: 15px;
+    background-color: #13B3A4;
     color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
 }
-section .forms form input[type="submit"]{
-    width: 100%;
-    height: 30px;
-    margin-top: 10px;
+
+form{
+    margin: auto;
+    padding: 0;
+    width: 40%;
+    color: rgb(71, 71, 71);
     text-align: center;
-    /* line-height: 50px; */
-    border: none;
-    border-radius: 20px;
-    background: rgb(0, 180, 15);
-    color: #000;
+    background-color: #b3b3b3d2;
+    border-radius: 18px;
 }
-section .forms form input[type="submit"]:hover{
-    color: lightblue;
-    background: rgb(47, 0, 255);
-    transition: 0.5s ease-in-out;
+
+form ul{
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
-section .forms form ul li small{
-    color: rgb(0, 68, 196);
-    font-size: 12px;
+
+ul li{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
-section .forms form span{
-    font-size: 15px;
-    color: red;
+
+ul li input{
+    margin: 10px auto;
+    padding: 6px;
+    height: 22px;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 8px;
 }
-@media (max-width: 600px){
-    section .header{
-        height: 100px;
-        padding: 0;
-        display: grid;
-        grid-template-columns: 48% 48%;
-        width: 100%
-    }
-    section .header .buttons{
-        display: flex;
-        position: absolute;
-        top: 110px;
-        left: 25%;
-    }
+
+ul li input[type="submit"]{
+    margin: 10px auto;
+    padding: 6px;
+    height: 30px;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: #6CCBEF;
+    color: black;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(0, 0, 0);
+    opacity: 1; /* Firefox */
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(0, 0, 0);
+  }
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(0, 0, 0);
+  }

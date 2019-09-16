@@ -205,7 +205,7 @@ module.exports = {
                             console.log(err);
                             res.json({user:false})
                         } else {
-                            User.findByIdAndUpdate(decoded.id, { $addToSet: { whishlist: game } }, (err, user) => {
+                            User.findByIdAndUpdate(decoded.id, { $addToSet: { wishlist: game } }, (err, user) => {
                                 if(err){
                                     console.log(err);
                                     res.json({err: err})

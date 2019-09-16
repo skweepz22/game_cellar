@@ -3,7 +3,7 @@
     margin: 0;
     height: calc(100vh - 104px);
     width: 100%;
-    background-image: url("../../../assets/images/chainz.jpg");    
+    /* background-image: url("../../../assets/images/chainz.jpg");     */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -16,7 +16,7 @@ section.card{
     padding: 0.5em;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.33);
-    height: fit-content;
+    height: 80%;
     width: 50vw;
     border-radius: 10px;
 }
@@ -41,11 +41,11 @@ section.card .userinfo button{
 
 section.card .userinfo h1{
     padding: 0;
-    margin: auto;
+    margin: 10px;
 }
 
 section.card .userinfo img{
-    margin: 10px auto;
+    margin: 10px;
     padding: 0;
     height: 160px;
     width: 160px;

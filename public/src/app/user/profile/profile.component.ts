@@ -25,12 +25,16 @@ export class ProfileComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.user){
           this.user = res.user
+          this.showUser();
         }
       })
   }
 
+  showUser(){
+    console.log(this.user)
+  }
+
   updateProfile(){
-    console.log(this.editUser)
     this._service.editUser(this.editUser)
       .subscribe((res: any) => {
         if(res.user){

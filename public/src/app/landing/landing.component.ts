@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
   }
   games;
   signIn=false;
-  reg=true;
+  reg=false;
   
   constructor(private _service: GamerService,private _router: Router) { }
 

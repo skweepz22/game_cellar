@@ -12,45 +12,12 @@ header section{
     height: 10vh;
     display: grid;
     grid-template-columns: auto 1fr auto;
-    background: #ae0000; /* Old browsers */
-    background: -moz-linear-gradient(-90deg, #8c0000 0%, #ba0000 56%, #d60101 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-90deg, #8c0000 0%, #ba0000 56%, #d60101 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(180deg, #8c0000 0%, #ba0000 56%, #d60101 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0019', endColorstr='#a90329',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #343434;
 }
-/* header section form{
-    margin: 0 auto;
-    padding: 0;
-    width: 80%;
-    height: 50%;
-}
-header section form input[type="text"]{
-    margin: auto 5px;
-    padding: 0 5px;
-    width: 350px;
-    max-width: 70%;
-    height: 30px;
-    border: 1px solid #000;
-    border-radius: 2px;
-    box-shadow: 0.2em 0.2em rgba(57, 57, 57, 0.87)
-}
-header section form input[type="submit"]{
-    margin:  10px auto;
-    padding: 5px 5px;
-    width: 75px;
-    height: 30px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    box-shadow: 0.2em 0.2em rgba(57, 57, 57, 0.87);
-    background-color: rgb(113, 113, 113);
-} */
+
 header section div.logo{
     height: 60px;
-    width: 190px;
-    background-color: rgba(172, 172, 172, 0.9);
-    border: 1px solid #000;
-    border-radius:  45%;
-    box-shadow: 0 10px 5px 5px rgba(0,0,0,0.8);
+    color: #ffff;
     transform: rotate(-5deg);
 }
 
@@ -69,11 +36,6 @@ header section div.logo:hover h1{
 }
 
 header nav{
-    background: #45484d; /* Old browsers */
-    background: -moz-linear-gradient(-180deg, #45484d 0%, #000000 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-180deg, #45484d 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(360deg, #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     height: 5vh;
     width: fit-content;
     margin: auto;
@@ -84,17 +46,17 @@ header nav ul{
     display: flex;
     flex-direction: row;
     list-style: none;
-    font-family: 'PLayfair Display SC', serif;
-    font-size: 14px;
-    font-weight: bold;
 }
 header nav ul li{
     margin: 0;
     padding: 0;
     text-align: center;
-    border-right: 1px solid #fff;
+    border-right: 1px solid rgb(0, 0, 0);
     transition: 0.5s ease-in-out;
-    color: whitesmoke;
+    color: rgb(207, 207, 207);
+    font-family: 'PLayfair Display SC', serif;
+    font-size: 18px;
+    font-weight: bold;
 }
 header nav ul li:last-child{
     border-right: none;
@@ -120,5 +82,5 @@ header section button{
     border: 1px solid #000;
     border-radius: 5px;
     box-shadow: 0 2px 5px 1px rgba(57, 57, 57, 0.87);
-    background-color: rgb(155, 0, 0);
+    background-color: #DC202B;
 }

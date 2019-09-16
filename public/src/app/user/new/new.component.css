@@ -4,28 +4,29 @@ section{
     height: calc(100vh - 104px);
     width: 100%;
     display: grid;
-    background-image: url("../../../assets/images/chainz.jpg");    
+    /* background-image: url("../../../assets/images/chainz.jpg");     */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 .gameForm{
     padding: 0;
     margin: 0;
-    height: 75%;
-    width: 75%;
+    height: 100vh;
+    width: 80vw;
     margin: auto;
     display: flex;
     flex-direction: column;
-    background-color: rgba(0,0,0,0.888);
-    color: rgba(202, 0, 0, 0.789);
+    background-color: rgba(101, 101, 101, 0.888);
+    color: #343434;
     text-align: center;
 }
 .gameForm form{
     height: 100%;
-    width: 35vw;
+    width: 40%;
     padding: 10px;
     margin: auto;
     display: flex;
@@ -44,13 +45,14 @@ section{
     text-align: left;
 }
 
-.gameForm form input[type="text"], input[type="number"], select, option{
-    height: 25px;
-    width: 100%;
+.gameForm form input[type="text"], input[type="submit"], input[type="number"], select, option{
+    height: 28px;
+    width: 500px;
+    margin: 4px 0;
 }
 
-@media only screen and (min-width: 620px) {
+/* @media only screen and (min-width: 620px) {
     .gameForm{
         width: 50%;
     }
-}
+} */
