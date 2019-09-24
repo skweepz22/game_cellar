@@ -26,7 +26,7 @@ section{
 }
 .gameForm form{
     height: 100%;
-    width: 40%;
+    width: 65%;
     padding: 10px;
     margin: auto;
     display: flex;
@@ -47,7 +47,7 @@ section{
 
 .gameForm form input[type="text"], input[type="submit"], input[type="number"], select, option{
     height: 28px;
-    width: 500px;
+    width: 100%;
     margin: 4px 0;
 }
 

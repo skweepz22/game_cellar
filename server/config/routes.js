@@ -1,5 +1,18 @@
 const controller = require("../controllers/controller.js");
 const path = require("path");
+const multer = require('multer');
+
+
+const storage = multer.diskStorage({
+    destination: './public/src/assets/userImages',
+    filename: function(req, file, cb){
+        cb(null, file.fieldname+'-'+Date.now()+path.extname(file.originalname))
+    }
+});
+
+const upload = multer({
+    storage: storage
+}).single('profile');
 
 module.exports = (app) => {
 
@@ -32,7 +45,12 @@ module.exports = (app) => {
     });
 
     app.put("/user/:token", (req, res) => {
-        controller.updateUser(req, res);
+        upload(req, res, (err) => {
+            if (err) {
+                console.log(err);
+            }
+            controller.updateUser(req, res);
+        })
     })
 
     app.delete("/games/:token/:game_id", (req, res) => {

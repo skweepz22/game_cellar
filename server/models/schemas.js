@@ -12,6 +12,7 @@ const UserSchema = mongoose.Schema({
     bio:{type:String, required:false},
     system:{type:String, required:false},
     wishlist:[{type:Schema.Types.ObjectId, ref:"Game"}],
+    profile: {type: Array, required: false}
 }, {timestamps:true});
 
 const GameSchema = mongoose.Schema({

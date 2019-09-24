@@ -47,7 +47,7 @@ export class GamerService{
   }
 
   editUser(data){
-    return this._http.put<any>("/user/"+this.token, data)
+    return this._http.put<any>("/user/"+this.token, data);
   }
 
   addGameToWishlist(game_id){

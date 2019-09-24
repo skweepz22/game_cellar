@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   edit_modal: Boolean = false;
   editUser: User = new User();
+  profile;
 
   constructor(private _service: GamerService, private _router: Router) { }
 
@@ -25,18 +26,25 @@ export class ProfileComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.user){
           this.user = res.user
-          this.showUser();
+          console.log(this.user)
         }
       })
   }
 
-  showUser(){
-    console.log(this.user)
+  uploadImage(e){
+    this.profile = e.target.files[0];
   }
 
   updateProfile(){
-    this._service.editUser(this.editUser)
-      .subscribe((res: any) => {
+    this.editUser.profile = this.profile;
+    const fd = new FormData();
+    fd.append('bio', this.editUser.bio);
+    fd.append('phone', this.editUser.phone);
+    fd.append('system', this.editUser.system);
+    fd.append('profile', this.editUser.profile);
+
+    this._service.editUser(fd)
+      .subscribe(res => {
         if(res.user){
           this.user = res.user;
           window.location.reload();

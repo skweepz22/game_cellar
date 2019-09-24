@@ -1,12 +1,13 @@
 <section>
     <div class="header">
       <h1>Welcome to Game Cellar</h1>
-    </div>
-    <div class="forms">
       <div class="buttons">
           <button (click)="register()">Register</button>
           <button (click)="sign()">Sign In</button>
-        </div>
+      </div>
+    </div>
+    
+    <div class="forms">
       <form (submit)="login_user()" #logForm="ngForm" *ngIf="this.signIn==true">
         <h1>Sign In!</h1>
         <ul>

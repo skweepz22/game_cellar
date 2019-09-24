@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const path = require('path');
 const User = mongoose.model("User");
 const Game = mongoose.model("Game");
 
@@ -115,9 +116,11 @@ module.exports = {
                             console.log(err);
                             res.json({user:false});
                         } else {
+                            console.log(req.file)
                             user.bio = req.body.bio;
-                            user.phone = req.body.phone
-                            user.system = req.body.system
+                            user.phone = req.body.phone;
+                            user.system = req.body.system;
+                            user.profile.push(req.file.path)
                             user.save();
                             res.json({user:user});
                         }

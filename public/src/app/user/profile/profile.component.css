@@ -10,23 +10,28 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
+    overflow: hidden;
 }
 
 section.card{
     padding: 0.5em;
     margin: auto;
-    background-color: rgba(0, 0, 0, 0.33);
-    height: 80%;
-    width: 50vw;
-    border-radius: 10px;
+    background-color: rgba(101, 101, 101, 0.888);
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
 }
 
 section.card .userinfo{
     padding: 0;
-    margin: 1em;
+    margin: auto 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     color: whitesmoke;
+    border-right: 2px solid #000;
+    flex: 1;
 }
 section.card .userinfo button{
     height: 40px;
@@ -47,16 +52,27 @@ section.card .userinfo h1{
 section.card .userinfo img{
     margin: 10px;
     padding: 0;
-    height: 160px;
-    width: 160px;
+    height: 220px;
+    width: 180px;
     border: 2px solid #fff;
-    border-radius: 50%;
 }
 
 section.card .userinfo ul{
     padding: 0;
-    margin: auto 2em;
+    margin: 0;
     list-style: none;
+}
+
+section.card .userinfo ul li{
+    padding: 10px;
+    margin: 0;
+
+}
+
+.userGames{
+    margin: 0 auto;
+    padding: 0 5em;
+    flex: 2;
 }
 
 section.edit_modal{
@@ -73,7 +89,7 @@ section.edit_modal .edit_modal_content{
     padding: 0;
     margin: auto;
     min-height: fit-content;
-    height: 40vh;
+    height: fit-content;
     width: 40vw;
     background-color: #fff;
     box-shadow: 0 5px 10px 8px rgba(0, 0, 0, 0.65)
