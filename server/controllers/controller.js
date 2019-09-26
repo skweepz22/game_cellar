@@ -45,18 +45,27 @@ module.exports = {
                 // send user id as false to instantiate error message on front end
                 console.log(err);
                 res.json({id:false});
-            } else {    
+            } else { 
                 // comapre the password entered with the previously hashed password savedin db
                 bcrypt.compare(req.body.password, user.password, function(err, match){
                     if(err){
-                        console.log("Oh no there was an error")
                         // log error to cosnole for development
                         // send user id as false to instantiate error message on front end
                         console.log(err);
-                        res.json({id:false});
+                        res.json({
+                            message: "There was an error",
+                            token:false
+                        });
                     // check if match returns as true or false
                     }
-                    if(match){    
+                    // if match is false return error message and id as false
+                    if(!match) {
+                        res.json({
+                            message: "User was not found",
+                            token: false
+                        })
+                    }
+                    if(match){ 
                         // if true will initiate session id
                         // send id as user id to log in user and allow access to app
                         var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
@@ -116,12 +125,14 @@ module.exports = {
                             console.log(err);
                             res.json({user:false});
                         } else {
-                            console.log(req.file)
+                            
+                            let filepath = path.join(__dirname, '../../uploads/userImages') + '/' + req.file.filename;
                             user.bio = req.body.bio;
                             user.phone = req.body.phone;
                             user.system = req.body.system;
-                            user.profile.push(req.file.path)
+                            user.profile.push(filepath)
                             user.save();
+                            res.sendFile(filepath)
                             res.json({user:user});
                         }
                     });

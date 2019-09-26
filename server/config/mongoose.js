@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 
-mongoose.connect("mongodb://localhost/game_cellar", { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://felipe_santana:burnafat1@gamecellar-uqobm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: false });
 
 var models_path = path.join(__dirname, '../models');
 

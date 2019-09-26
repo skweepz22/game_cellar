@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.user){
           this.user = res.user
-          console.log(this.user)
+          console.log(this.user.profile[0])
         }
       })
   }
@@ -45,9 +45,10 @@ export class ProfileComponent implements OnInit {
 
     this._service.editUser(fd)
       .subscribe(res => {
+        console.log(res)
         if(res.user){
           this.user = res.user;
-          window.location.reload();
+          // window.location.reload();
         }
       })
   }

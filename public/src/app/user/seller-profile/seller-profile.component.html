@@ -1,20 +1,23 @@
 <div class="container">
-    <section class="card">
-      <div class="userinfo">
-        <h1>{{user.username}}</h1>
-        <img src="../../../assets/images/noprofilepic.png" alt="profile picture">
-        <ul>
-          <li><b>Bio:</b> {{user.bio}}</li>
-          <hr>
-          <li><b>System:</b> {{user.system}}</li>
-          <hr>
-          <li><b>Phone:</b> {{user.phone}}</li>
-          <hr>
-          <li><b>Games:</b> {{user.games[0].name}}</li>
-          <hr>
-          <li><b>Wishlist:</b> {{user.wishlist[0].name}}</li>
-        </ul>
-      </div>
-    </section>
-  </div>
-  
+  <section class="card">
+    <div class="userinfo">
+      <h1>{{user.username}}</h1>
+      <img src="../../../../../server/assets/images/circuits.jpg" alt="profile picture">
+      <ul>
+        <li><b>Bio:</b> {{user.bio}}</li>
+        <li><b>System:</b> {{user.system}}</li>
+        <li><b>Phone:</b> {{user.phone}}</li>
+      </ul>
+    </div>
+    <div class="userGames">
+      <h1>These are my games</h1>
+      <ul>
+        <li *ngFor="let game of user.games">{{game.name}} | ${{game.price}}</li>
+      </ul>
+      <h1>These are my wishlist</h1>
+      <ul>
+        <li *ngFor="let game of user.wishlist">{{game.name}} | ${{game.price}}</li>
+      </ul>
+    </div>
+  </section>
+</div>

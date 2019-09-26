@@ -1,26 +1,37 @@
 .container{
     padding: 0;
-    margin: 2rem 0 0 0;
-    height: 100%;
-    width: auto;
+    margin: 0;
+    height: calc(100vh - 104px);
+    width: 100%;
+    /* background-image: url("../../../assets/images/chainz.jpg");     */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
+    overflow: hidden;
 }
 
 section.card{
-    padding: 0;
+    padding: 0.5em;
     margin: auto;
-    background-color: rgba(0, 0, 0, 0.33);
-    height: 100%;
-    width: 50%;
-    border-radius: 10px;
+    background-color: rgba(101, 101, 101, 0.888);
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
 }
 
 section.card .userinfo{
     padding: 0;
-    margin: 1em;
+    margin: auto 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     color: whitesmoke;
+    border-right: 2px solid #000;
+    flex: 1;
 }
 section.card .userinfo button{
     height: 40px;
@@ -35,20 +46,116 @@ section.card .userinfo button{
 
 section.card .userinfo h1{
     padding: 0;
-    margin: auto;
+    margin: 10px;
 }
 
 section.card .userinfo img{
-    margin: 10px auto;
+    margin: 10px;
     padding: 0;
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 180px;
     border: 2px solid #fff;
-    border-radius: 50%;
 }
 
 section.card .userinfo ul{
     padding: 0;
-    margin: auto 2em;
+    margin: 0;
     list-style: none;
+}
+
+section.card .userinfo ul li{
+    padding: 10px;
+    margin: 0;
+
+}
+
+.userGames{
+    margin: 0 auto;
+    padding: 0 5em;
+    flex: 2;
+}
+
+section.edit_modal{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+section.edit_modal .edit_modal_content{
+    padding: 0;
+    margin: auto;
+    min-height: fit-content;
+    height: fit-content;
+    width: 40vw;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 8px rgba(0, 0, 0, 0.65)
+}
+
+.edit_header{
+    padding: 0;
+    margin: 0;
+    height: 25%;
+    width: 100%;
+    background-color: #000;
+}
+
+.edit_header span{
+    padding: 20px 10px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+.edit_header span:hover{
+    color: #fff;
+    cursor: pointer;
+}
+
+.edit_header h2{
+    padding: 0 0 10px 0;
+    margin: 0;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.edit_form{
+    padding: 10px;
+    margin: 0;
+    display: flex;
+}
+
+.edit_form form{
+    padding: 0;
+    margin: auto;
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_form form input[type="text"], textarea{
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.edit_form form input[type="text"]::placeholder, textarea::placeholder{
+    color: #000;
+    font-size: 16px;
+}
+
+.edit_form form input[type="submit"]{
+    padding: 5px;
+    margin:   10px auto;
+    width: 90%;
+    height: 30px;
+    border: none;
+    background-color: rgb(0, 150, 204);
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,0.6)
 }

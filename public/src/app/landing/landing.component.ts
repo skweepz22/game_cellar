@@ -17,7 +17,7 @@ export class LandingComponent implements OnInit {
   err = {
     logError: false,
     regError: false,
-    msg:"Oops, Something went wrong! Please try again :)",
+    msg:"",
   }
   games;
   signIn=false;
@@ -58,7 +58,8 @@ export class LandingComponent implements OnInit {
           window.location.reload();
         } else {
           this.err.logError = true;
-          this._router.navigateByUrl("/");
+          this.err.msg = res.message;
+          console.log(this.err)
         };
       }
     );
