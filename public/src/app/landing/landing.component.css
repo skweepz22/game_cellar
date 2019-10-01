@@ -9,6 +9,7 @@ section {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    /* object-fit: cover; */
     display: flex;
     flex-flow: column;
 }

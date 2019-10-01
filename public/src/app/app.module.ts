@@ -15,6 +15,7 @@ import {GamerService } from './gamer.service';
 import { UserComponent } from './user/user.component';
 import { SellerProfileComponent } from './user/seller-profile/seller-profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContactComponent } from './contact/contact.component';
     ProfileComponent,
     UserComponent,
     SellerProfileComponent,
-    ContactComponent
+    ContactComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
