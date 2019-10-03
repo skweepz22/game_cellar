@@ -29,7 +29,7 @@ module.exports = {
                         console.log(err);
                         res.json(err);
                     } else {
-                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'})
+                        var token = jwt.sign({seller_id:user._id}, secret, { expiresIn: '1d'})
                         res.json({token:token});
                     }
                 });
@@ -106,8 +106,12 @@ module.exports = {
                 if(err || !user){
                     res.json({user:false});
                 } else {
+                    var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
                     user.password = null;
-                    res.json({user:user});
+                    res.json({
+                        user: user,
+                        token: token
+                    });
                 }
             });
         }

@@ -18,10 +18,6 @@ export class ProfileComponent implements OnInit {
   constructor(private _service: GamerService, private _router: Router) { }
 
   ngOnInit() {
-    if(!this._service.getToken()){
-      this._router.navigateByUrl("/");
-    }
-
     this._service.getUser()
       .subscribe((res: any) => {
         if(res.user){

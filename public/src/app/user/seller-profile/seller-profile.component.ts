@@ -15,7 +15,8 @@ export class SellerProfileComponent implements OnInit {
   constructor(private _router: Router, private _service: GamerService) { }
 
   ngOnInit() {
-    this.user = this._service.seller;
+    let seller_token = window.localStorage.getItem("seller_token")
+    this._service.getSeller(seller_token)
   }
 
 }

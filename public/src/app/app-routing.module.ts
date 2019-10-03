@@ -6,6 +6,7 @@ import { LandingComponent } from "./landing/landing.component";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { DashComponent } from './user/dash/dash.component';
 import { SellerProfileComponent } from './user/seller-profile/seller-profile.component';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", component:LandingComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path:"profile", pathMatch:"full", component:ProfileComponent},
     {path:"seller", pathMatch:"full", component:SellerProfileComponent},
     {path:"new", pathMatch:"full", component:NewComponent},
+    {path:"message", pathMatch:"full", component:MessageComponent}
   ]}
 ];
 

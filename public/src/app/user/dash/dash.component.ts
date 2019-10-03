@@ -56,10 +56,16 @@ export class DashComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.user){
           this.modal = true;
-          this.seller = res.user
+          this.seller = res.user;
+          window.localStorage.setItem("seller_token", res.token);
         }
       });
   };
+
+  modalOff() {
+    this.modal = false;
+    window.localStorage.removeItem("seller_token")
+  }
 
   addGameToWishlist(game_id){
     this._service.addGameToWishlist(game_id)
