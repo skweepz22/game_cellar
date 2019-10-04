@@ -15,7 +15,7 @@ import {GamerService } from './gamer.service';
 import { UserComponent } from './user/user.component';
 import { SellerProfileComponent } from './user/seller-profile/seller-profile.component';
 import { ContactComponent } from './contact/contact.component';
-import { MessageComponent } from './message/message.component';
+import { MessageComponent } from './user/message/message.component';
 
 @NgModule({
   declarations: [

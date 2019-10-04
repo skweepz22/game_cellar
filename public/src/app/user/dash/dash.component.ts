@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GamerService } from 'src/app/gamer.service';
-import { User } from 'src/app/user';
-import { Game } from '../../game';
+import { User } from 'src/app/models/user';
+import { Game } from '../../models/game';
 import { NgxSpinnerService } from 'ngx-spinner'; 
 
 @Component({
@@ -52,7 +52,7 @@ export class DashComponent implements OnInit {
     })
   }
   getSeller(id){
-    this._service.getSeller(id)
+    this._service.getSeller(id, null)
       .subscribe((res: any) => {
         if(res.user){
           this.modal = true;
@@ -89,7 +89,6 @@ export class DashComponent implements OnInit {
   }
 
   visitSellersProfile(){
-    this._service.seller = this.seller;
     this._router.navigateByUrl("/gamer/seller");
   }
 }

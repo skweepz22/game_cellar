@@ -8,8 +8,8 @@ header{
 }
 header section{
     margin: 0;
-    padding: 1em;
-    height: 10vh;
+    padding: 10px;
+    height: 8vh;
     display: grid;
     grid-template-columns: auto 1fr auto;
     background: #343434;
@@ -36,20 +36,23 @@ header section div.logo:hover h1{
 }
 
 header nav{
-    height: 5vh;
+    height: 100%;
     width: fit-content;
     margin: auto;
+    display: flex;
 }
 header nav ul{
-    margin: 0;
+    margin: auto;
     padding: 0;
+    height: inherit;
     display: flex;
     flex-direction: row;
     list-style: none;
 }
 header nav ul li{
-    margin: 0;
+    margin: auto;
     padding: 0;
+    height: 80%;
     text-align: center;
     border-right: 1px solid rgb(0, 0, 0);
     transition: 0.5s ease-in-out;
@@ -57,16 +60,17 @@ header nav ul li{
     font-family: 'PLayfair Display SC', serif;
     font-size: 18px;
     font-weight: bold;
+    display: flex;
 }
 header nav ul li:last-child{
     border-right: none;
 }
 header nav ul li a{
-    margin: 0;
+    margin: auto;
     padding: 14px 44px;
+    height: inherit;
     text-decoration: none;
     color: inherit;
-    line-height: 5vh;
 }
 
 header nav ul li:hover{

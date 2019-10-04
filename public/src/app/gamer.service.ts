@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from "./user";
+import { User } from "./models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ import { User } from "./user";
 export class GamerService{
 
   token: string = this.getToken();
-  seller: User;
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
@@ -34,8 +33,10 @@ export class GamerService{
     return this._http.get<Observable<User>>("/user/"+this.token)
   }
 
-  getSeller(id){
-    return this._http.get<Observable<User>>("/seller/"+id)
+  getSeller(id, token){
+    if(id) return this._http.get<Observable<User>>("/seller/"+id)
+    else return this._http.get<Observable<User>>("/user/"+token)
+    
   }
 
   getToken(){

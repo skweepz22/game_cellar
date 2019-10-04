@@ -14,10 +14,24 @@
       <ul>
         <li *ngFor="let game of user.games">{{game.name}} | ${{game.price}}</li>
       </ul>
-      <h1>These are my wishlist</h1>
+      <h1>This is my wishlist</h1>
       <ul>
         <li *ngFor="let game of user.wishlist">{{game.name}} | ${{game.price}}</li>
       </ul>
+        <div class="message">
+          <h3>Meessage me about a game</h3>
+          <button (click)="messageTF()">Message</button>
+          <div *ngIf="message" class="sendMessage">
+            <form class="messageForm" (submit)="createMessage()" #messageForm="ngForm">
+              <select name="game">
+                <option></option>
+                <option *ngFor="let game of user.games" value="">{{game.name}}</option>
+              </select>
+              <textarea name="message"></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
     </div>
   </section>
 </div>

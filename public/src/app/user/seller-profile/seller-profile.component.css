@@ -159,3 +159,10 @@ section.edit_modal .edit_modal_content{
     border-radius: 10px;
     box-shadow: 0 2px 2px 1px rgba(0,0,0,0.6)
 }
+
+.messageForm{
+    display: flex;
+    flex-flow: column;
+    height: inherit;
+    width: 80%;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamerService } from '../../gamer.service';
 import { Router } from '@angular/router';
-import { Game } from '../../game';
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-new',

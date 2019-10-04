@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamerService } from '../gamer.service';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-import { User } from '../user';
-import {map, filter} from 'rxjs/operators'
+import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-landing',

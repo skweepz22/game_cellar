@@ -32,6 +32,10 @@ module.exports = (app) => {
         controller.all_games(req, res);
     });
 
+    app.get("/user/messages/:token", (req, res) => {
+        controller.getMessages(req, res);
+    })
+
     app.post("/login", (req, res) => {
         controller.logInUser(req, res);
     });
@@ -43,6 +47,10 @@ module.exports = (app) => {
     app.post("/games/:token", (req, res) => {
         controller.create_game(req, res);
     });
+
+    app.post("/user/messages/:token", (req, res) => {
+        controller.createMessage(req, res);
+    })
 
     app.put("/user/:token", (req, res) => {
         upload(req, res, (err) => {

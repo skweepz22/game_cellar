@@ -9,6 +9,7 @@ const UserSchema = mongoose.Schema({
     password:{type:String, required:[true, "Password is required"], minlength:[10, "Password must have a minimum of 10 characters"]},
     phone:{type:String, required:false},
     games:[{type:Schema.Types.ObjectId, ref:"Game"}],
+    messages:[{type:Schema.Types.ObjectId, ref:"Message"}],
     bio:{type:String, required:false},
     system:{type:String, required:false},
     wishlist:[{type:Schema.Types.ObjectId, ref:"Game"}],
@@ -25,5 +26,13 @@ const GameSchema = mongoose.Schema({
     _user: {type: Schema.Types.ObjectId, ref:"User"}
 }, {timestamps:true});
 
+const MessageSchema = mongoose.Schema({
+    from:{type: Schema.Types.ObjectId, ref:"User"},
+    to:{type:Schema.Types.ObjectId, ref:"Game"},
+    _game:{type: Schema.Types.ObjectId, ref:"Game"},
+    body:{type:String, required:true},  
+}, {timestamps:true})
+
 mongoose.model("User", UserSchema);
 mongoose.model("Game", GameSchema);
+mongoose.model("Message", MessageSchema);

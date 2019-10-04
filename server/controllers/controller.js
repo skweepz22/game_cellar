@@ -12,11 +12,11 @@ const secret = "ICryAlot";
 module.exports = {
 
     create_user: function(req, res){
-        var user = new User();
+        let user = new User();
         user.username = req.body.username;
         user.email = req.body.email;
 
-        var user_password = req.body.password
+        let user_password = req.body.password
         
         bcrypt.hash(user_password, saltRounds, (err, hashed) => {
             if(err){
@@ -29,7 +29,7 @@ module.exports = {
                         console.log(err);
                         res.json(err);
                     } else {
-                        var token = jwt.sign({seller_id:user._id}, secret, { expiresIn: '1d'})
+                        let token = jwt.sign({seller_id:user._id}, secret, { expiresIn: '1d'})
                         res.json({token:token});
                     }
                 });
@@ -68,7 +68,7 @@ module.exports = {
                     if(match){ 
                         // if true will initiate session id
                         // send id as user id to log in user and allow access to app
-                        var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
+                        let token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
                         res.json({token: token}); 
                     }
                 });
@@ -79,8 +79,8 @@ module.exports = {
 
     one_user: function(req, res){
         // Using both id and token to either find User or Seller information
-        var token = req.params.token;
-        var id = req.params.id
+        let token = req.params.token;
+        let id = req.params.id
         if(token){
             //if token is provided we are searching for user
             //verify token before query
@@ -106,7 +106,7 @@ module.exports = {
                 if(err || !user){
                     res.json({user:false});
                 } else {
-                    var token = jwt.sign({id:user._id}, secret, { expiresIn: '7d'});
+                    let token = jwt.sign({id:user._id}, secret, { expiresIn: '1h'});
                     user.password = null;
                     res.json({
                         user: user,
@@ -124,20 +124,28 @@ module.exports = {
                     console.log(err);
                     res.json({user:false});
                 } else {
-                    User.findById(decoded.id, function(err, user){
+                    User.findById(id).populate("games").populate("wishlist").exec(function(err, user){
                         if(err || !user){
                             console.log(err);
                             res.json({user:false});
                         } else {
+                            if (req.file) {
+                                let filepath = path.join(__dirname, '../../uploads/userImages') + '/' + req.file.filename;
+                                user.bio = req.body.bio;
+                                user.phone = req.body.phone;
+                                user.system = req.body.system;
+                                user.profile.push(filepath)
+                                user.save();
+                                res.sendFile(filepath)
+                                res.json({user:user});
+                            } else {
+                                user.bio = req.body.bio;
+                                user.phone = req.body.phone;
+                                user.system = req.body.system;
+                                user.save();
+                                res.json({user:user});
+                            }
                             
-                            let filepath = path.join(__dirname, '../../uploads/userImages') + '/' + req.file.filename;
-                            user.bio = req.body.bio;
-                            user.phone = req.body.phone;
-                            user.system = req.body.system;
-                            user.profile.push(filepath)
-                            user.save();
-                            res.sendFile(filepath)
-                            res.json({user:user});
                         }
                     });
                 };
@@ -148,13 +156,13 @@ module.exports = {
    
 
     create_game: function(req, res){
-        var token = req.params.token;
+        let token = req.params.token;
         if(token){
             jwt.verify(token, secret, function(err, decoded){
                 if(err){
                     res.json({ game:false });
                 } else {
-                    var game = new Game(req.body);
+                    let game = new Game(req.body);
                     game._user = decoded.id;
                     game.save(function(err, game){
                         if(err){
@@ -211,7 +219,7 @@ module.exports = {
     },
     
     addGameToWishList: (req, res) => {
-        var game_id = req.body.game_id;
+        let game_id = req.body.game_id;
         if(req.params.token){
             jwt.verify(req.params.token, secret, (err, decoded) => {
                 if(err){
@@ -236,5 +244,10 @@ module.exports = {
                 };
             });
         };
+    },
+
+    createMessage: (req, res) => {
+        let sender_id = req.body.from;
+        let 
     }
 };
