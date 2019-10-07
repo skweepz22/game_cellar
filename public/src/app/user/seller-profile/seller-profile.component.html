@@ -20,14 +20,14 @@
       </ul>
         <div class="message">
           <h3>Meessage me about a game</h3>
-          <button (click)="messageTF()">Message</button>
-          <div *ngIf="message" class="sendMessage">
-            <form class="messageForm" (submit)="createMessage()" #messageForm="ngForm">
-              <select name="game">
-                <option></option>
-                <option *ngFor="let game of user.games" value="">{{game.name}}</option>
+          <button (click)="showMessage()">Message</button>
+          <div *ngIf="messageForm" class="messageForm">
+            <form class="messageForm" (submit)="sendMessage()" #messageForm="ngForm">
+              <select type="string" name="game" [(ngModel)]="message.game">
+                <option value="" disabled selected>Select A Game</option>
+                <option *ngFor="let myGame of user.games">{{myGame.name}}</option>
               </select>
-              <textarea name="message"></textarea>
+              <textarea name="message" [(ngModel)]="message.body" placeholder="Send a message..."></textarea>
               <input type="submit" value="Submit">
             </form>
           </div>

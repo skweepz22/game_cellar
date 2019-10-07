@@ -49,7 +49,8 @@ module.exports = (app) => {
     });
 
     app.post("/user/messages/:token", (req, res) => {
-        controller.createMessage(req, res);
+        console.log("made it to the routes")
+        // controller.createMessage(req, res);
     })
 
     app.put("/user/:token", (req, res) => {

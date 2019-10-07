@@ -247,7 +247,6 @@ module.exports = {
     },
 
     createMessage: (req, res) => {
-        let sender_id = req.body.from;
-        let 
+        console.log(req.body)
     }
 };

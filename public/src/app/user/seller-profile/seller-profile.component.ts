@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamerService } from '../../gamer.service';
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
+import { Message } from '../../models/message'
 
 @Component({
   selector: 'app-seller-profile',
@@ -10,8 +10,9 @@ import { User } from '../../models/user';
 })
 export class SellerProfileComponent implements OnInit {
 
-  user: User;
-  message = false;
+  user;
+  message = new Message();
+  messageForm = false;
 
   constructor(private _router: Router, private _service: GamerService) { }
 
@@ -23,13 +24,16 @@ export class SellerProfileComponent implements OnInit {
       })
   }
 
-  messageTF() {
-    if(this.message) this.message = false;
-    else this.message = true;
+  showMessage() {
+    if(this.messageForm) this.messageForm = !this.messageForm;
+    else this.messageForm = true;
   }
 
   sendMessage() {
-    this._router.navigateByUrl("/gamer/message")
+    this.message.to = this.user._id;
+    this.message.from = window.localStorage.getItem("token")
+
+    this._service.sendMessage(this.message)
   }
 
 }
