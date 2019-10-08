@@ -31,9 +31,11 @@ export class SellerProfileComponent implements OnInit {
 
   sendMessage() {
     this.message.to = this.user._id;
-    this.message.from = window.localStorage.getItem("token")
 
     this._service.sendMessage(this.message)
+      .subscribe( (res: any) => {
+        console.log(res);
+      })
   }
 
 }

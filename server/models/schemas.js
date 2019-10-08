@@ -27,9 +27,9 @@ const GameSchema = mongoose.Schema({
 }, {timestamps:true});
 
 const MessageSchema = mongoose.Schema({
-    from:{type: Schema.Types.ObjectId, ref:"User"},
-    to:{type:Schema.Types.ObjectId, ref:"Game"},
-    _game:{type: Schema.Types.ObjectId, ref:"Game"},
+    from:{type: Schema.Types.ObjectId, ref:"User", required:true},
+    to:{type:Schema.Types.ObjectId, ref:"User", required:true},
+    _game:{type:Schema.Types.ObjectId, ref:"Game", required:true},
     body:{type:String, required:true},  
 }, {timestamps:true})
 

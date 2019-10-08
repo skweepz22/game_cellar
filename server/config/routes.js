@@ -22,10 +22,6 @@ module.exports = (app) => {
 
     app.get("/seller/:id", (req, res) => {
         controller.one_user(req, res);
-    })
-
-    app.get("/game", (req, res) => {
-        controller.one_game(req, res);
     });
 
     app.get("/games", (req, res) => {
@@ -49,9 +45,8 @@ module.exports = (app) => {
     });
 
     app.post("/user/messages/:token", (req, res) => {
-        console.log("made it to the routes")
-        // controller.createMessage(req, res);
-    })
+        controller.createMessage(req, res);
+    });
 
     app.put("/user/:token", (req, res) => {
         upload(req, res, (err) => {
@@ -62,13 +57,13 @@ module.exports = (app) => {
         })
     })
 
-    app.delete("/games/:token/:game_id", (req, res) => {
-        controller.deleteGame(req, res);
-    });
-
     app.put("/user/:token/wish", (req, res) => {
         controller.addGameToWishList(req, res);
     })
+
+    app.delete("/games/:token/:game_id", (req, res) => {
+        controller.deleteGame(req, res);
+    });
 
     app.all("*", (req, res, next) => {
         res.sendFile(path.resolve("./public/dist/public/index.html"));

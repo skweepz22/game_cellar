@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 const User = mongoose.model("User");
 const Game = mongoose.model("Game");
+const Message = mongoose.model("Message");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -114,7 +115,7 @@ module.exports = {
                     });
                 }
             });
-        }
+        } else res.json({err: "no token or id provided"});
     },
 
     updateUser: function(req, res){
@@ -150,7 +151,7 @@ module.exports = {
                     });
                 };
             });
-        };
+        } else res.json({err: "no token provided"});
     },
 
    
@@ -181,9 +182,7 @@ module.exports = {
                     })
                 };
             });
-        } else {
-            res.redirect("/");
-        }
+        } else res.json({err: "no token provided"});
     },
 
     deleteGame: (req, res) => {
@@ -205,7 +204,7 @@ module.exports = {
                     });
                 };
             });
-        };
+        } else res.json({err: "no token provided"});
     },
 
     all_games(req, res){
@@ -243,10 +242,46 @@ module.exports = {
                     });
                 };
             });
-        };
+        } else res.json({err: "no token provided"});
     },
 
     createMessage: (req, res) => {
         console.log(req.body)
+        let token = req.params.token;
+        jwt.verify(token, secret, (err, decoded) => {
+            if(err) {
+                console.log(err) 
+                res.json({err: err})
+            } else {
+                console.log(decoded)
+               Game.find({name: req.body.game}, (err, game) => {
+                   if(err) {
+                       console.log(err);
+                       res.send({err: err});
+                   } else {
+                       let message = new Message();
+                       message.to = req.body.to;
+                       message.from = decoded.id;
+                       message._game = game[0]._id;
+                       message.body = req.body.body
+                       message.save((err, message) => {
+                           if(err) {
+                               console.log(err);
+                               res.json({err:err})
+                           } else {
+                               Message.findById(message._id).populate("to").populate("from").exec((err, message) => {
+                                   if(err){
+                                       console.log(err);
+                                       res.json({err:err});
+                                   } else {
+                                       res.json({message:message})
+                                   }
+                               })
+                           }
+                       })
+                   }
+               })
+            }
+        })
     }
 };
