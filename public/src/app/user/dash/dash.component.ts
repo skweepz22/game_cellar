@@ -27,11 +27,6 @@ export class DashComponent implements OnInit {
   constructor(private _router: Router, private _service: GamerService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 5000)
 
     if(!this._service.getUser()){
       this._service.logOutUser();

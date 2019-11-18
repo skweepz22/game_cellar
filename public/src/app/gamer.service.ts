@@ -59,6 +59,10 @@ export class GamerService{
     return this._http.post<Observable<any>>("/user/messages/"+this.token, message)
   }
 
+  getMessages(){
+    return this._http.get<Observable<any>>(`/user/messages/${this.token}`)
+  }
+
   logOutUser(){
     this.token = null;
     window.localStorage.removeItem("token");

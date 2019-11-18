@@ -85,6 +85,12 @@ header section button{
     height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
-    box-shadow: 0 2px 5px 1px rgba(57, 57, 57, 0.87);
+    box-shadow: 1px 1px #000;
     background-color: #DC202B;
+}
+
+header section button:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px #000;
+    transition: 1.2s ease-out;
 }

@@ -246,14 +246,13 @@ module.exports = {
     },
 
     createMessage: (req, res) => {
-        console.log(req.body)
+        if(!req.body) res.json({err: "Please enter message data"})
         let token = req.params.token;
         jwt.verify(token, secret, (err, decoded) => {
             if(err) {
                 console.log(err) 
                 res.json({err: err})
             } else {
-                console.log(decoded)
                Game.find({name: req.body.game}, (err, game) => {
                    if(err) {
                        console.log(err);
@@ -282,6 +281,13 @@ module.exports = {
                    }
                })
             }
+        })
+    },
+
+    getMessages: (req, res) => {
+        Message.find({}, (err, messages) => {
+            if(err) res.json({err: err})
+            res.json({messages: messages})
         })
     }
 };

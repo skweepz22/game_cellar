@@ -29,6 +29,7 @@
               </select>
               <textarea name="message" [(ngModel)]="message.body" placeholder="Send a message..."></textarea>
               <input type="submit" value="Submit">
+              <span *ngIf="this.error.err">{{this.error.msg}}</span>
             </form>
           </div>
         </div>

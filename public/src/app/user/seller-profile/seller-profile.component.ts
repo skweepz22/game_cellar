@@ -13,6 +13,10 @@ export class SellerProfileComponent implements OnInit {
   user;
   message = new Message();
   messageForm = false;
+  error = {
+    err: false,
+    msg: "Please add game and message"
+  }
 
   constructor(private _router: Router, private _service: GamerService) { }
 
@@ -30,6 +34,8 @@ export class SellerProfileComponent implements OnInit {
   }
 
   sendMessage() {
+    if(this.message.body === "" || this.message.game === "") return this.error.err = true;
+    
     this.message.to = this.user._id;
 
     this._service.sendMessage(this.message)
