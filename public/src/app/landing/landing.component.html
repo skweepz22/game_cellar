@@ -15,7 +15,7 @@
             <input type="text" name="username" required minlength="8" [(ngModel)]="userLog.username" #username="ngModel" placeholder="Username">
           </li>
           <li>
-            <input type="password" name="password" required minlength="10" [(ngModel)]="userLog.password" #password="ngModel" placeholder="Password">   
+            <input type="password" name="password" required [(ngModel)]="userLog.password" #password="ngModel" placeholder="Password">   
           </li>
           <li>
             <input type="submit" value="Log In" [disabled]="logForm.invalid">

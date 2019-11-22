@@ -45,7 +45,10 @@ module.exports = {
                 // log error to cosnole for development
                 // send user id as false to instantiate error message on front end
                 console.log(err);
-                res.json({id:false});
+                res.json({
+                    message: "Username or Password does not match our records",
+                    id:false
+                });
             } else { 
                 // comapre the password entered with the previously hashed password savedin db
                 bcrypt.compare(req.body.password, user.password, function(err, match){
@@ -54,7 +57,7 @@ module.exports = {
                         // send user id as false to instantiate error message on front end
                         console.log(err);
                         res.json({
-                            message: "There was an error",
+                            message: "Username or Password does not match our records",
                             token:false
                         });
                     // check if match returns as true or false
@@ -62,7 +65,7 @@ module.exports = {
                     // if match is false return error message and id as false
                     if(!match) {
                         res.json({
-                            message: "User was not found",
+                            message: "Username or Password does not match our records",
                             token: false
                         })
                     }
