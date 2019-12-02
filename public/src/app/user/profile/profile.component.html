@@ -20,7 +20,7 @@
     <div class="userinfo">
       <button (click)="edit_modal=true">Edit Profile</button>
       <h1>{{user.username}}</h1>
-      <img src="../../../../../server/assets/images/circuits.jpg" alt="profile picture">
+      <img src={{user.profile[0]}} alt="profile picture">
       <ul>
         <li><b>Bio:</b> {{user.bio}}</li>
         <li><b>System:</b> {{user.system}}</li>

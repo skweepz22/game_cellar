@@ -1,18 +1,31 @@
-const controller = require("../controllers/controller.js");
-const path = require("path");
-const multer = require('multer');
-
-
-const storage = multer.diskStorage({
-    destination: './uploads/userImages',
-    filename: function(req, file, cb){
-        cb(null, file.fieldname+'-'+Date.now()+path.extname(file.originalname))
+const controller = require("../controllers/controller.js"),
+        path = require("path"),
+        aws = require('aws-sdk'),
+        multer = require('multer'),
+        multerS3 = require('multer-s3'),
+        s3 = new aws.S3({});
+    
+aws.config.update({
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    region: process.env.AWS_REGION
+})
+ 
+ const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'game-cellar-bucket',
+    acl: 'public-read',
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString())
     }
-});
+  })
+})
 
-const upload = multer({
-    storage: storage
-}).single('profile');
+const singleUpload = upload.single('image')
 
 module.exports = (app) => {
 
@@ -49,7 +62,7 @@ module.exports = (app) => {
     });
 
     app.put("/user/:token", (req, res) => {
-        upload(req, res, (err) => {
+        singleUpload(req, res, (err) => {
             if (err) {
                 console.log(err);
             }

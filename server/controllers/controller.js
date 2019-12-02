@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 const jwt = require("jsonwebtoken");
-const secret = "ICryAlot";
+const secret = process.env.JWT_SECRET;
 
 module.exports = {
 
@@ -128,19 +128,18 @@ module.exports = {
                     console.log(err);
                     res.json({user:false});
                 } else {
-                    User.findById(id).populate("games").populate("wishlist").exec(function(err, user){
+                    User.findById(decoded.id).populate("games").populate("wishlist").exec(function(err, user){
                         if(err || !user){
                             console.log(err);
                             res.json({user:false});
                         } else {
                             if (req.file) {
-                                let filepath = path.join(__dirname, '../../uploads/userImages') + '/' + req.file.filename;
+                                let filepath = req.file.location;
                                 user.bio = req.body.bio;
                                 user.phone = req.body.phone;
                                 user.system = req.body.system;
                                 user.profile.push(filepath)
                                 user.save();
-                                res.sendFile(filepath)
                                 res.json({user:user});
                             } else {
                                 user.bio = req.body.bio;

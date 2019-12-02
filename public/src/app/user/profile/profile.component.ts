@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
     fd.append('bio', this.editUser.bio);
     fd.append('phone', this.editUser.phone);
     fd.append('system', this.editUser.system);
-    fd.append('profile', this.editUser.profile);
+    fd.append('image', this.editUser.profile);
 
     this._service.editUser(fd)
       .subscribe(res => {
