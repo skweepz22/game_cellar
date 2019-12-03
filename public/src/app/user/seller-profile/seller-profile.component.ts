@@ -40,7 +40,7 @@ export class SellerProfileComponent implements OnInit {
 
     this._service.sendMessage(this.message)
       .subscribe( (res: any) => {
-        console.log(res);
+        this._router.navigateByUrl("/gamer/message")
       })
   }
 

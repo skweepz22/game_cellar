@@ -1,12 +1,13 @@
-<section>
-    <div class="header">
-      <h1>Welcome to Game Cellar</h1>
-      <div class="buttons">
-          <button (click)="register()">Register</button>
-          <button (click)="sign()">Sign In</button>
-      </div>
+<section class="head">
+  <div class="header">
+    <h1>Welcome to Game Cellar</h1>
+    <div class="buttons">
+        <button (click)="register()">Register</button>
+        <button (click)="sign()">Sign In</button>
     </div>
-    
+  </div>
+</section>
+<section class="main">
     <div class="forms">
       <form (submit)="login_user()" #logForm="ngForm" *ngIf="this.signIn==true">
         <h1>Sign In!</h1>
@@ -46,4 +47,20 @@
         <span style="text-align: center;" *ngIf="err.regError">{{err.msg}}</span>
       </form>
     </div> 
+  </section>
+  <section class="info">
+    <p>Games are like fine wine, the longer they age the higher the quality</p>
+    <div class="games">
+      <h3>Check out some of our most recent Games</h3>
+      <div class="gameCard" *ngFor="let game of games">
+        <h1>{{game.name}}</h1>
+        <h3>{{game.console}}</h3>
+        <p>{{game.condition}}</p>
+        <p>{{game.year}}</p>
+        <b>${{game.price}}</b>
+      </div>
+    </div>
+  </section>
+  <section class="footer">
+    <h3>Copyright © 2019 Game Cellar</h3>
   </section>

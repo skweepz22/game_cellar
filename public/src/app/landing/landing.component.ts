@@ -28,6 +28,15 @@ export class LandingComponent implements OnInit {
     if(this._service.getToken()){
       this._router.navigateByUrl("/gamer/main");
     }
+
+    this._service.getGames()
+      .subscribe(
+        (res: any) => {
+          this.games = res.games
+        }
+      )
+
+      console.log(this._service.getToken())
   }
 
   register_user(){

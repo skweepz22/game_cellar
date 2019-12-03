@@ -30,7 +30,7 @@ module.exports = {
                         console.log(err);
                         res.json(err);
                     } else {
-                        let token = jwt.sign({seller_id:user._id}, secret, { expiresIn: '1d'})
+                        let token = jwt.sign({seller_id:user._id}, secret, { expiresIn: '7d'})
                         res.json({token:token});
                     }
                 });
@@ -190,7 +190,7 @@ module.exports = {
     deleteGame: (req, res) => {
         const token = req. params.token
         const game_id = req.params.game_id 
-        if(req.params.token){
+        if(token){
             jwt.verify(token, secret, (err, decoded) => {
                 if(err){
                     res.json({delete:false});
@@ -287,9 +287,19 @@ module.exports = {
     },
 
     getMessages: (req, res) => {
-        Message.find({}, (err, messages) => {
-            if(err) res.json({err: err})
-            res.json({messages: messages})
-        })
+        const token = req.params.token
+        if(token) {
+            jwt.verify(token, secret, (err, decoded) => {
+                if(err) {
+                    console.log(err)
+                    res.json({err: err})
+                } else {
+                    Message.find({ $and: [ { $or: [ { to: decoded.id }, { from: decoded.id } ] } ]}, (err, messages) => {
+                        if(err) res.json({err: err})
+                        res.json({messages: messages})
+                    })
+                }
+            })
+        }
     }
 };

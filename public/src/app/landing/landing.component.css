@@ -1,24 +1,17 @@
-section {
+section.head {
     margin: 0;
     padding: 0;
-    height: 90vh;
+    height: 10vh;
     width: 100%;
-    overflow: hidden;
-    background-image: url("../../../../server/assets/images/circuits.jpg");
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* object-fit: cover; */
-    display: flex;
-    flex-flow: column;
+    background-color: rgba(60, 60, 60, 0.795);
 }
+
 .header {
-    margin: 20px auto;
+    margin: 0;
     padding: 0;
     width: 100vw;
-    display: grid;
-    grid-auto-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
 }
 
 .header h1 {
@@ -38,7 +31,7 @@ section {
 }
 
 .header .buttons :nth-child(1){
-    margin: 0 1em;
+    margin: 1em;
     padding: 15px;
     background-color: rgb(193, 193, 193);
     color: #fff;
@@ -47,12 +40,46 @@ section {
 }
 
 .header .buttons :nth-child(2){
-    margin: 0 1em;
+    margin: 1em;
     padding: 15px;
     background-color: #13B3A4;
     color: #fff;
     font-size: 14px;
     font-weight: bolder;
+}
+
+@media only screen and (max-width: 840px) {
+    .header{
+        flex-direction: column;
+    }
+    .header h1 {
+        font-size: 36px
+    }
+    .header .buttons{
+        margin: auto;
+    }
+    .header .buttons :nth-child(1){
+        padding: 10px;
+    }
+    .header .buttons :nth-child(2){
+        padding: 10px
+    }
+}
+
+section.main {
+    margin: 0;
+    /* padding: 10px; */
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    background-image: url("../../../../server/assets/images/circuits.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* object-fit: cover; */
+    display: flex;
+    flex-flow: column;
 }
 
 .forms {
@@ -67,12 +94,10 @@ section {
     border-radius: 12px;
 }
 
-
-
 form{
     margin: auto;
     padding: 0;
-    width: 40vw;
+    width: 60vw;
     color: rgb(71, 71, 71);
     text-align: center;
     background-color: #b3b3b3d2;
@@ -127,3 +152,31 @@ ul li input[type="submit"]{
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: rgb(0, 0, 0);
   }
+
+  @media only screen and (max-width: 520px){
+      form{
+          width: 75vw;
+      }
+
+      .header h1{
+          text-align: center;
+      }
+  }
+  @media only screen and (max-width: 375px) {
+    .header h1{
+        font-size: 28px;
+    }
+}
+
+section.footer{
+    padding: 0;
+    margin: 0;
+    height: 6vh;
+    width: 100vw;
+    background-color: rgba(60, 60, 60, 0.795);
+    display: flex;
+}
+section.footer h3{
+    margin: auto;
+    padding: 10px;
+}
