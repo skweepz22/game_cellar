@@ -1,18 +1,12 @@
-html{
+*{
     padding: 0;
     margin: 0;
-    min-width: fit-content;
-    min-height: fit-content;
-    min-width: -webkit-fit-content;
-    min-width: -moz-fit-content;
-    min-height: -webkit-fit-content;
-    min-height: -moz-fit-content;
-    width: 100%;
-    height: 100%;
 }
 body{
     margin: 0;
     padding: 0;
+    background-color: #000;
+    height: fit-content;
 }
 h1{
     font-family: 'Bungee', 'cursive'

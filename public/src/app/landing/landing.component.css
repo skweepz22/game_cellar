@@ -4,6 +4,7 @@ section.head {
     height: 10vh;
     width: 100%;
     background-color: rgba(60, 60, 60, 0.795);
+    border-bottom: 1.5px solid #13B3A4;
 }
 
 .header {
@@ -69,15 +70,16 @@ section.head {
 section.main {
     margin: 0;
     /* padding: 10px; */
-    height: 80vh;
+    height: 85vh;
     width: 100%;
     overflow: hidden;
+    background-color: rgba(69, 69, 69, 0.88);
     background-image: url("../../../../server/assets/images/circuits.jpg");
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    /* object-fit: cover; */
+    background-blend-mode: color-dodge ;    
     display: flex;
     flex-flow: column;
 }
@@ -87,6 +89,12 @@ section.main {
     padding: 0;
     display: flex;
     flex-direction: column;
+}
+
+.forms h1 {
+    margin: 10px;
+    padding: 0;
+    text-decoration: underline;
 }
 
 .forms button {
@@ -100,8 +108,8 @@ form{
     width: 60vw;
     color: rgb(71, 71, 71);
     text-align: center;
-    background-color: #b3b3b3d2;
-    border-radius: 18px;
+    background-color: #b3b3b3eb;
+    /* border-radius: 18px; */
 }
 
 form ul{
@@ -168,6 +176,41 @@ ul li input[type="submit"]{
     }
 }
 
+section.info{
+    margin: 0;
+    padding: 0;
+    height: 60vh;
+    min-height: fit-content;
+    width: 100%;
+    background: linear-gradient(to left, #13B3A4, rgb(193, 193, 193));
+    display: flex;
+    flex-direction: column;
+}
+
+section.info h2, h3{
+    margin: 20px auto;
+    padding: 0;
+    text-align: center;
+    /* transform: skew(0deg, 8deg);÷ */
+}
+
+.games {
+    margin: 0 5em;
+    padding: 0;
+    /* transform: skew(0deg, 8deg); */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.gameCard {
+    margin: 0;
+    padding: 12px;
+    height: 80%;
+    width: auto;
+    background-color: #cccc;
+}
+
 section.footer{
     padding: 0;
     margin: 0;
@@ -176,7 +219,25 @@ section.footer{
     background-color: rgba(60, 60, 60, 0.795);
     display: flex;
 }
-section.footer h3{
+section.footer h4{
     margin: auto;
     padding: 10px;
+    color: #cccc;
+}
+
+@media only screen and (max-width: 445px) {
+
+    section.info h2, h3{
+        margin: 10px auto;
+    }
+
+    .games{
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    section.info {
+        height: 65vh;
+    }
 }

@@ -19,7 +19,7 @@
             <input type="password" name="password" required [(ngModel)]="userLog.password" #password="ngModel" placeholder="Password">   
           </li>
           <li>
-            <input type="submit" value="Log In" [disabled]="logForm.invalid">
+            <input type="submit" value="Sign In" [disabled]="logForm.invalid">
           </li>
         </ul>
         <span style="text-align: center;" *ngIf="err.logError">{{err.msg}}</span>
@@ -49,12 +49,12 @@
     </div> 
   </section>
   <section class="info">
-    <p>Games are like fine wine, the longer they age the higher the quality</p>
+    <h2>Games are like fine wine, the longer they age the higher the quality</h2>
+    <h3>Check out some of our most recent Games</h3>
     <div class="games">
-      <h3>Check out some of our most recent Games</h3>
       <div class="gameCard" *ngFor="let game of games">
-        <h1>{{game.name}}</h1>
-        <h3>{{game.console}}</h3>
+        <p>{{game.name}}</p>
+        <p>{{game.console}}</p>
         <p>{{game.condition}}</p>
         <p>{{game.year}}</p>
         <b>${{game.price}}</b>
@@ -62,5 +62,5 @@
     </div>
   </section>
   <section class="footer">
-    <h3>Copyright © 2019 Game Cellar</h3>
+    <h4>Copyright © 2019 Game Cellar</h4>
   </section>
