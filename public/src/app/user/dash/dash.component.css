@@ -20,7 +20,7 @@ section.welcome{
 section.games{
     min-height: fit-content;
     height: 100%;
-    width: 75%;
+    width: 90%;
     margin: auto;
     padding: 0;
     display: grid;
@@ -34,7 +34,7 @@ section.games .card{
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: 250px;
-    width: 150px;
+    width: 80%;
     background-color: #343434;
     border: 2px solid #000;
     display: flex;
