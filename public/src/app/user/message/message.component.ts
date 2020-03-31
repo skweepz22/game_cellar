@@ -8,6 +8,9 @@ import { GamerService } from '../../gamer.service';
 export class MessageComponent implements OnInit {
 
   messages
+  token = this._service.getToken()
+  user
+  recipients = []
 
   constructor(private _service: GamerService) { }
 
@@ -20,5 +23,6 @@ export class MessageComponent implements OnInit {
       }
     })
   }
+
 
 }

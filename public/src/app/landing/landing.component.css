@@ -16,9 +16,10 @@ section.head {
 }
 
 .header h1 {
-    margin: auto;
+    margin: 0 auto;
     padding: 0;
     font-size: 42px;
+    line-height: 5rem;
     font-weight: bolder;
     text-shadow: 2px 2px 6px rgba(255, 253, 253, 0.667);
     color: rgb(54, 54, 54);
@@ -28,7 +29,7 @@ section.head {
 }
 
 .header .buttons {
-    margin: auto;
+    margin: 0 auto;
 }
 
 .header .buttons :nth-child(1){

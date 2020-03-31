@@ -294,9 +294,9 @@ module.exports = {
                     console.log(err)
                     res.json({err: err})
                 } else {
-                    Message.find({ $and: [ { $or: [ { to: decoded.id }, { from: decoded.id } ] } ]}, (err, messages) => {
+                    Message.find({$or: [{to: decoded.id}, {from: decoded.id}]}).populate("to").populate("from").exec((err, message) => {
                         if(err) res.json({err: err})
-                        res.json({messages: messages})
+                        else res.json({messages: message})
                     })
                 }
             })

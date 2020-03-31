@@ -35,8 +35,6 @@ export class LandingComponent implements OnInit {
           this.games = res.games
         }
       )
-
-      console.log(this._service.getToken())
   }
 
   register_user(){
