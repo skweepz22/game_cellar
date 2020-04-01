@@ -22,6 +22,11 @@ export class MessageComponent implements OnInit {
         console.log(res.messages)
       }
     })
+
+    this._service.getUser()
+    .subscribe((res: any) => {
+      if(res.user) this.user = res.user
+    })
   }
 
 

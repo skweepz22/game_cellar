@@ -2,11 +2,12 @@
     padding: 0;
     margin: 0;
 }
-body{
+html, body{
     margin: 0;
     padding: 0;
     background-color: #000;
-    height: fit-content;
+    height: 100%;
+    min-height: fit-content;
 }
 h1{
     font-family: 'Bungee', 'cursive'

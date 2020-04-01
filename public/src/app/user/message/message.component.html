@@ -1,8 +1,11 @@
 <div class="container">
   <section class="allMessages">
     <h2>All Messages</h2>
+    <div *ngFor="let message of messages">
+      <h3 *ngIf="message.to.username === this.user.username">{{message.from.username}}</h3>
+      <h3 *ngIf="message.from.username === this.user.username">{{message.to.username}}</h3>
+    </div>
   </section>
   <section class="message">
-    <h2 *ngFor="let message of messages">Message from {{message.to.username}}</h2>
   </section>
 </div>
